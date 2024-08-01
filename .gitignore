@@ -33,6 +33,9 @@ output_data/*
 # JSON files
 *.json
 
+# ZIP files
+*.ZIP
+
 # Exceptions for specific JSON files if needed
 !package.json
 !tsconfig.json
