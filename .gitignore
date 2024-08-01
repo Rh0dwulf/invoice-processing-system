@@ -36,6 +36,9 @@ output_data/*
 # ZIP files
 *.ZIP
 
+# ipynb files
+*.ipynb
+
 # Exceptions for specific JSON files if needed
 !package.json
 !tsconfig.json

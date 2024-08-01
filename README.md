@@ -10,7 +10,7 @@ This system fetches invoice data from an API and processes it to extract structu
 4. [Usage](#usage)
 5. [Project Structure](#project-structure)
 6. [Troubleshooting](#troubleshooting)
-7. [Approach](#aproach)
+7. [Approach](#approach)
 8. [Assumptions](#assumptions)
 9. [Coding Best Practices](#coding-best-practices)
 10. [Future Improvements](#future-improvements)
@@ -155,7 +155,7 @@ conda activate invoice_processor
 
 Our invoice processing system consists of two main components:
 
-1. **API Fetcher (`api_fetcher.py`)**: This script interacts with an external API to fetch invoice data based on input documents.
+1. **API Fetcher (`api_response.py`)**: This script interacts with an external API to fetch invoice data based on input documents.
 2. **Invoice Processor (`invoice_processor.py`)**: This script processes the fetched invoice data and extracts relevant information.
 
 The system follows a two-step process:
