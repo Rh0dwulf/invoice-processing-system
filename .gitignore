@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environment
+invoice_env/
+.env
+
+# Conda environment
+.conda/
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Project-specific
+Documents/*
+income_data/*
+output_data/*
+!Documents/.gitkeep
+!income_data/.gitkeep
+!output_data/.gitkeep
+
+# PDF files
+*.pdf
+
+# JSON files
+*.json
+
+# Exceptions for specific JSON files if needed
+!package.json
+!tsconfig.json
+
+# Log files
+*.log
+
+# Temporary files
+*.tmp
+
+# Backup files
+*.bak
+*~
