@@ -12,6 +12,7 @@ This system fetches invoice data from an API and processes it to extract structu
 6. [Troubleshooting](#troubleshooting)
 7. [Approach](#approach)
 8. [Assumptions](#assumptions)
+9. [Unit Tests](#unit-tests)
 9. [Coding Best Practices](#coding-best-practices)
 10. [Future Improvements](#future-improvements)
 
