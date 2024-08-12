@@ -2,3 +2,4 @@
 python-dotenv==0.19.2
 requests==2.26.0
 veryfi==3.4.1
+pytest==7.3.1

@@ -122,22 +122,22 @@ python invoice_processor.py --input custom_input_folder --output custom_output_f
 
 invoice-processing-system/
 │
-├── api_fetcher.py
-├── invoice_processor.py
-├── requirements.txt
-├── conda_env_setup.sh
-├── .env
-├── README.md
-├── approach_and_practices.md
-│
+├── src/
+│   ├── api_fetcher.py
+│   └── invoice_processor.py
+├── tests/
+│   ├── test_api_fetcher.py
+│   └── test_invoice_processor.py
 ├── Documents/
-│   └── (place input documents here)
-│
+│   └── .gitkeep
 ├── income_data/
-│   └── (API responses will be saved here)
-│
-└── output_data/
-└── (processed invoice data will be saved here)
+│   └── .gitkeep
+├── output_data/
+│   └── .gitkeep
+├── .gitignore
+├── README.md
+├── requirements.txt
+└── conda_env_setup.sh
 
 ## Troubleshooting
 
@@ -171,6 +171,73 @@ The system follows a two-step process:
 5. The API client is implemented in a separate `API` module.
 6. The system is run on a machine with Conda installed.
 
+## Unit Tests
+
+This project uses Python's built-in `unittest` framework for testing. The tests are located in the `tests` directory.
+
+### Test Structure
+
+The project has two main test files:
+
+1. `test_api_response.py`
+2. `test_invoice_processor.py`
+
+#### test_api_response.py
+
+This file contains tests for the API interaction and document processing:
+
+1. `test_process_documents`: This test mocks the API client, file system operations, and verifies that:
+   - The `process_document` method is called for each mock document.
+   - The correct file operations are performed (opening files and writing JSON data).
+   - The API client is called with the correct parameters.
+
+2. `test_client_initialization`: This test verifies that the API client is initialized with the correct credentials.
+
+#### test_invoice_processor.py
+
+This file contains tests for the invoice data extraction and validation:
+
+1. `test_is_valid_invoice_format`: This test checks the invoice format validation function with both valid and invalid invoice data.
+
+2. `test_extract_invoice_data`: This test verifies that the invoice data extraction function correctly processes valid invoice data and transforms it into the expected output format.
+
+3. `test_extract_invoice_data_invalid_format`: This test ensures that the extraction function raises a `ValueError` when given an invalid invoice format.
+
+### Running Tests
+
+To run all tests, use the following command from the project root directory:
+
+```
+python -m unittest discover tests
+```
+
+To run tests for a specific file:
+
+```
+python -m unittest tests.test_api_response
+python -m unittest tests.test_invoice_processor
+```
+
+### Test Coverage
+
+The current tests cover the main functionalities of both `api_response.py` and `invoice_processor.py`:
+
+- API interaction and document processing
+- Invoice format validation
+- Invoice data extraction
+- Error handling for invalid inputs
+
+### Mocking
+
+The tests in `test_api_response.py` make extensive use of mocking to isolate the code under test:
+
+- `veryfi.Client` is mocked to avoid making actual API calls during testing.
+- File system operations (`os.listdir`, `os.path.isfile`, `open`) are mocked to avoid creating actual files and directories.
+- `json.dump` behavior is simulated by mocking the `write` calls to the file.
+
+The tests in `test_invoice_processor.py` use sample input data to test the processing functions directly, without the need for mocking.
+
+
 ## Coding Best Practices
 
 1. **Modular Design**: The system is split into two separate scripts, each with a single responsibility, following the Single Responsibility Principle.
@@ -197,10 +264,13 @@ The system follows a two-step process:
 
 12. **Version Control**: While not explicitly mentioned, it's assumed that the project uses a version control system like Git.
 
+13. **Unit Test**: Implemented unit test to ensure code reliability.
+
+
+
 ## Future Improvements
 
-1. Implement unit tests to ensure code reliability.
-2. Add more robust input validation and error handling.
-3. Implement parallel processing for handling large numbers of documents more efficiently.
-4. Create a configuration file for easily adjustable settings.
-5. Implement a user interface for easier interaction with the system.
+1. Add more robust input validation and error handling.
+2. Implement parallel processing for handling large numbers of documents more efficiently.
+3. Create a configuration file for easily adjustable settings.
+4. Implement a user interface for easier interaction with the system.
